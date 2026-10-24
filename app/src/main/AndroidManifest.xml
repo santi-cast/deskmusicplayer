@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.REQUEST_DELETE_PACKAGES" />
+    <!-- Lets the setup assistant set the screen timeout to "never". -->
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+
+    <!-- Package visibility on Android 11+; harmless on Android 8.1. -->
+    <queries>
+        <intent>
+            <action android:name="android.intent.action.MAIN" />
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent>
+        <package android:name="com.spotify.music" />
+        <package android:name="com.eddyizm.degoogled.tempus" />
+        <package android:name="com.motorola.fmplayer" />
+        <package android:name="org.oxycblt.auxio" />
+        <package android:name="de.danoeh.antennapod" />
+    </queries>
+
+    <application
+        android:allowBackup="false"
+        android:label="@string/app_name"
+        android:theme="@style/KioskTheme">
+
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:launchMode="singleTask"
+            android:lockTaskMode="if_whitelisted"
+            android:screenOrientation="unspecified">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.HOME" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".LogosActivity"
+            android:exported="false"
+            android:lockTaskMode="if_whitelisted" />
+
+        <activity
+            android:name=".SetupActivity"
+            android:exported="false"
+            android:lockTaskMode="if_whitelisted" />
+
+        <activity
+            android:name=".AppsActivity"
+            android:exported="false"
+            android:lockTaskMode="if_whitelisted" />
+
+        <activity
+            android:name=".SettingsActivity"
+            android:windowSoftInputMode="stateHidden"
+            android:exported="false"
+            android:lockTaskMode="if_whitelisted" />
+
+        <receiver
+            android:name=".AdminReceiver"
+            android:exported="true"
+            android:permission="android.permission.BIND_DEVICE_ADMIN">
+            <meta-data
+                android:name="android.app.device_admin"
+                android:resource="@xml/device_admin" />
+            <intent-filter>
+                <action android:name="android.app.action.DEVICE_ADMIN_ENABLED" />
+            </intent-filter>
+        </receiver>
+
+        <!-- Exported only to ADB (shell holds DUMP) so the clock can be tested from the PC. -->
+        <service
+            android:name=".ScreensaverService"
+            android:exported="true"
+            android:permission="android.permission.DUMP" />
+
+        <service
+            android:name=".MediaListener"
+            android:exported="true"
+            android:label="@string/app_name"
+            android:permission="android.permission.BIND_NOTIFICATION_LISTENER_SERVICE">
+            <intent-filter>
+                <action android:name="android.service.notification.NotificationListenerService" />
+            </intent-filter>
+        </service>
+
+        <receiver
+            android:name=".UpdateReceiver"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="android.intent.action.MY_PACKAGE_REPLACED" />
+            </intent-filter>
+        </receiver>
+
+        <service
+            android:name=".PowerMenuService"
+            android:exported="false"
+            android:label="@string/app_name"
+            android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE">
+            <intent-filter>
+                <action android:name="android.accessibilityservice.AccessibilityService" />
+            </intent-filter>
+            <meta-data
+                android:name="android.accessibilityservice"
+                android:resource="@xml/power_menu_service" />
+        </service>
+
+        <receiver
+            android:name=".Uninstaller$ResultReceiver"
+            android:exported="false" />
+    </application>
+</manifest>

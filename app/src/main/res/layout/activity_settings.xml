@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp">
+
+        <TextView style="@style/SettingsHeader" android:text="@string/settings_title" />
+
+        <TextView
+            android:id="@+id/status"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:textColor="#9A9A9A"
+            android:textSize="15sp" />
+
+        <TextView style="@style/SettingsLabel" android:text="@string/idle_seconds" />
+        <EditText android:id="@+id/idle_seconds" style="@style/SettingsField" android:inputType="number" />
+
+        <TextView style="@style/SettingsLabel" android:text="@string/clock_brightness" />
+        <EditText android:id="@+id/clock_brightness" style="@style/SettingsField" android:inputType="number" />
+
+        <TextView style="@style/SettingsLabel" android:text="@string/night_start" />
+        <EditText android:id="@+id/night_start" style="@style/SettingsField" android:inputType="time" />
+
+        <TextView style="@style/SettingsLabel" android:text="@string/night_end" />
+        <EditText android:id="@+id/night_end" style="@style/SettingsField" android:inputType="time" />
+
+        <Button android:id="@+id/save" style="@style/SettingsButton" android:text="@string/save" />
+        <Button android:id="@+id/show_clock" style="@style/SettingsButton" android:text="@string/show_clock" />
+        <Button android:id="@+id/apps" style="@style/SettingsButton" android:text="@string/apps_button" />
+        <Button android:id="@+id/setup" style="@style/SettingsButton" android:text="@string/setup_button" />
+        <Button android:id="@+id/logos" style="@style/SettingsButton" android:text="@string/logos_button" />
+
+        <TextView style="@style/SettingsHeader" android:text="@string/lock_title" />
+
+        <Switch
+            android:id="@+id/kiosk_enabled"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:text="@string/kiosk_enabled"
+            android:textColor="#E0E0E0"
+            android:textSize="18sp" />
+
+        <Button android:id="@+id/remove_owner" style="@style/SettingsButton" android:text="@string/remove_owner" android:textColor="#E57373" />
+        <Button android:id="@+id/close" style="@style/SettingsButton" android:text="@string/close" />
+    </LinearLayout>
+</ScrollView>
