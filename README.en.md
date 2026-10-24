@@ -109,8 +109,8 @@ step and test it on the real phone.
 
 Requirements: an Android 8.x phone and, for kiosk mode, **no accounts** on it.
 
-**From the phone**, with no computer: install the APK, choose the app as the home screen and complete **🔧 →
-Configuración inicial**. Building it and turning on kiosk mode need, for now, a computer with JDK 17+ and the Android SDK:
+**From the phone**, with no computer: download the APK from the [releases page](https://github.com/santi-cast/deskmusicplayer/releases),
+choose the app as the home screen and complete **🔧 → Configuración inicial**. Building it and turning on kiosk mode need, for now, a computer with JDK 17+ and the Android SDK:
 
 ```bash
 ./gradlew assembleDebug testDebugUnitTest

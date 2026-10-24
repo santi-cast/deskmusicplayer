@@ -22,7 +22,8 @@ cualquier reproductor si publican lo que suena.
 
 ## Opción A: todo desde el móvil
 
-1. **Instale la app**: descargue el APK con el navegador del móvil y ábralo. Android pedirá permitir instalar apps desde
+1. **Instale la app**: con el navegador del móvil, descargue el APK de la última versión en
+   https://github.com/santi-cast/deskmusicplayer/releases y ábralo. Android pedirá permitir instalar apps desde
    el navegador.
 2. **Elíjala como pantalla de inicio**: al pulsar Inicio, Android pregunta qué app usar; elija *Reproductor* y *Siempre*.
 3. **🔧 → Configuración inicial**: complete los pasos marcados con •. Cada *Abrir* lleva a la pantalla de Android
@@ -53,6 +54,11 @@ barra de notificaciones.
 ./gradlew assembleDebug testDebugUnitTest
 adb install -r app/build/outputs/apk/debug/app-debug.apk
 ```
+
+`assembleDebug` firma con la clave de depuración de su ordenador. Para una versión *release* firmada, `assembleRelease`
+lee la clave de un archivo de propiedades (`storeFile`, `storePassword`, `keyAlias`, `keyPassword`) indicado en la variable
+`DESKMUSICPLAYER_SIGNING`; sin él, el APK sale sin firmar. Android no deja instalar una versión firmada con otra clave
+encima de la que hay: habría que desinstalar, y eso quita el modo kiosco.
 
 ### Modo kiosco (device owner)
 

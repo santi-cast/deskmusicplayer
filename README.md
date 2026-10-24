@@ -111,8 +111,8 @@ cada paso y lo pruebo en el móvil real.
 
 Requisitos: un móvil Android 8.x y, para el modo kiosco, **sin cuentas**.
 
-**Desde el móvil**, sin ordenador: instalar el APK, elegir la app como pantalla de inicio y completar **🔧 → Configuración
-inicial**. Para compilarlo y activar el modo kiosco hace falta, de momento, un ordenador con JDK 17+ y el SDK de Android:
+**Desde el móvil**, sin ordenador: descargar el APK de la [página de releases](https://github.com/santi-cast/deskmusicplayer/releases),
+elegir la app como pantalla de inicio y completar **🔧 → Configuración inicial**. Para compilarlo y activar el modo kiosco hace falta, de momento, un ordenador con JDK 17+ y el SDK de Android:
 
 ```bash
 ./gradlew assembleDebug testDebugUnitTest

@@ -23,7 +23,8 @@ The interface is in Spanish; the names below are the ones shown in the app.
 
 ## Option A: everything from the phone
 
-1. **Install the app**: download the APK with the phone's browser and open it. Android will ask to allow installing apps
+1. **Install the app**: with the phone's browser, download the latest APK from
+   https://github.com/santi-cast/deskmusicplayer/releases and open it. Android will ask to allow installing apps
    from the browser.
 2. **Choose it as the home screen**: when you press Home, Android asks which app to use; choose *Reproductor* and
    *Always*.
@@ -55,6 +56,11 @@ notification shade.
 ./gradlew assembleDebug testDebugUnitTest
 adb install -r app/build/outputs/apk/debug/app-debug.apk
 ```
+
+`assembleDebug` signs with your computer's debug key. For a signed release build, `assembleRelease` reads the key from a
+properties file (`storeFile`, `storePassword`, `keyAlias`, `keyPassword`) given in the `DESKMUSICPLAYER_SIGNING` variable;
+without it the APK is left unsigned. Android will not install a version signed with another key over the installed one:
+you would have to uninstall, which removes kiosk mode.
 
 ### Kiosk mode (device owner)
 
