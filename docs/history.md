@@ -83,9 +83,8 @@ saber nada de `adb`:
 
 ## 6. Lo que queda abierto
 
-- Activar el modo kiosco sigue exigiendo un ordenador una vez (`adb shell dpm set-device-owner`). El siguiente paso es
-  hacerlo con un código QR tras restablecer de fábrica, el método de Android para empresas, que necesita una versión
-  publicada a la que apunte el QR.
+- El modo kiosco ya se puede activar sin ordenador con un código QR tras restablecer de fábrica (versión 1.1.0), pero falta
+  probarlo en un móvil real restablecido.
 
 - Por la batería gastada, la idea es tenerlo enchufado con un cable con interruptor, para que no esté cargando todo el día
   (sin root no se puede limitar la carga). No se ha medido cuánto dura desenchufado; si la tapa empieza a levantarse, la

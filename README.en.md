@@ -110,7 +110,9 @@ step and test it on the real phone.
 Requirements: an Android 8.x phone and, for kiosk mode, **no accounts** on it.
 
 **From the phone**, with no computer: download the APK from the [releases page](https://github.com/santi-cast/deskmusicplayer/releases),
-choose the app as the home screen and complete **🔧 → Configuración inicial**. Building it and turning on kiosk mode need, for now, a computer with JDK 17+ and the Android SDK:
+choose the app as the home screen and complete **🔧 → Configuración inicial**. **Kiosk mode** is turned on after a factory
+reset by scanning the [QR code in the guide](docs/setup.en.md#kiosk-mode-with-a-qr-code-no-computer) (not yet tested on a
+real phone) or with a computer. Building it needs JDK 17+ and the Android SDK:
 
 ```bash
 ./gradlew assembleDebug testDebugUnitTest
@@ -124,8 +126,8 @@ Both paths, the recommended settings and how to undo kiosk mode are in the [setu
 
 - The screensaver's touch detection relies on Android 8.x behaviour that newer versions restrict; Android 12+ would need
   another approach.
-- Turning on kiosk mode (device owner) needs a computer once today. Doing it with a QR code after a factory reset, the
-  Android enterprise method, is planned once there is a published release for the QR to point to.
+- The QR code to turn on kiosk mode without a computer is generated and checked (link and signature), but **it has not yet
+  been tested by resetting a real phone**; the computer (`adb`) path is tested.
 - The FM radio is optional: many phones have no tuner. The station name, logos and favourites scan target Motorola's
   radio app.
 - Google Play is not offered as a store, on purpose: the project targets a phone with no Google account.

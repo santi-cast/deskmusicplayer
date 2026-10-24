@@ -80,8 +80,8 @@ anything about `adb`:
 
 ## 6. What is still open
 
-- Turning on kiosk mode still needs a computer once (`adb shell dpm set-device-owner`). The next step is doing it with a
-  QR code after a factory reset, the Android enterprise method, which needs a published release for the QR to point to.
+- Kiosk mode can now be turned on without a computer with a QR code after a factory reset (version 1.1.0), but it still has
+  to be tested on a real reset phone.
 
 - Because of the worn battery the phone is meant to stay plugged in, through a cable with a switch so it is not charging
   around the clock (without root, charging cannot be limited). Battery life unplugged has not been measured; if the

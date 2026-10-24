@@ -112,7 +112,9 @@ cada paso y lo pruebo en el móvil real.
 Requisitos: un móvil Android 8.x y, para el modo kiosco, **sin cuentas**.
 
 **Desde el móvil**, sin ordenador: descargar el APK de la [página de releases](https://github.com/santi-cast/deskmusicplayer/releases),
-elegir la app como pantalla de inicio y completar **🔧 → Configuración inicial**. Para compilarlo y activar el modo kiosco hace falta, de momento, un ordenador con JDK 17+ y el SDK de Android:
+elegir la app como pantalla de inicio y completar **🔧 → Configuración inicial**. El **modo kiosco** se activa tras
+restablecer de fábrica escaneando el [código QR de la guía](docs/setup.md#modo-kiosco-con-un-código-qr-sin-ordenador)
+(aún no probado en un móvil real) o con un ordenador. Para compilarlo hace falta JDK 17+ y el SDK de Android:
 
 ```bash
 ./gradlew assembleDebug testDebugUnitTest
@@ -126,8 +128,8 @@ Los dos caminos, los ajustes recomendados y cómo deshacer el modo kiosco están
 
 - La detección de toques del salvapantallas depende de un comportamiento de Android 8.x que las versiones nuevas
   restringen; en Android 12 o superior habría que buscar otra vía.
-- Activar el modo kiosco (device owner) exige hoy un ordenador una vez. Está previsto hacerlo con un código QR tras
-  restablecer de fábrica, el método de Android para empresas, cuando haya una versión publicada a la que apunte el QR.
+- El código QR para activar el modo kiosco sin ordenador está generado y verificado (enlace y firma), pero **todavía no se
+  ha probado restableciendo un móvil real**; con ordenador (`adb`) sí está probado.
 - La Radio FM es opcional: muchos móviles no tienen sintonizador. El nombre de la emisora, los logos y el recorrido de
   favoritas están hechos para la app de radio de Motorola.
 - Google Play no se ofrece como tienda, a propósito: el proyecto está pensado para un móvil sin cuenta de Google.

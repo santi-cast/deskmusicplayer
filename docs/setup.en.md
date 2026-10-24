@@ -47,7 +47,28 @@ The interface is in Spanish; the names below are the ones shown in the app.
 Without kiosk mode the app works the same as home screen and player, but it does not lock: you can leave it from the
 notification shade.
 
-## Option B: with a computer (needed today for kiosk mode)
+### Kiosk mode with a QR code, no computer
+
+This is Android's method for setting up company phones. **It has not been tested on a real phone yet**: if you try it,
+please report it in an issue.
+
+1. **Factory reset the phone** (it erases everything; kiosk mode only turns on with no accounts).
+2. On the **welcome screen**, tap **6 times in a row** on the same spot. A QR reader opens; on Android 7 and 8 the wizard
+   may first ask to join a Wi-Fi network to download it.
+3. Scan this code:
+
+   <img src="provisioning-qr.png" width="300" alt="DeskMusicPlayer provisioning QR code">
+
+4. Android downloads the latest version from the [releases](https://github.com/santi-cast/deskmusicplayer/releases),
+   checks it is signed with the project key, installs it as *device owner* and finishes setup. The app opens locked;
+   then complete **🔧 → Configuración inicial**.
+
+The QR ([`provisioning.json`](provisioning.json)) holds the admin component, the fixed link to the latest version
+(`releases/latest/download/deskmusicplayer.apk`), the SHA-256 of the signing certificate and the option to keep system
+apps (the radio, the browser) enabled. It works for every version signed with the same key. It is generated with
+`tools/provisioning_qr.py`.
+
+## Option B: with a computer
 
 **Requirements:** USB debugging enabled and the PC authorised for `adb`; on the PC, JDK 17 or newer and the Android SDK
 (platform 36), with its path in `local.properties`: `sdk.dir=/path/to/Android/Sdk`.
@@ -74,9 +95,6 @@ adb shell am start -n com.reproductor.kiosk/.MainActivity
 
 From then on the phone boots into the app and only the chosen apps, the chosen store and Android's install confirmation
 can open. To undo it, open 🔧 and use **Quitar device owner**: the phone becomes a normal phone again.
-
-Turning it on without a computer with a **QR code** after a factory reset (the Android enterprise method) is planned, once
-there is a published release for the QR to point to.
 
 ### Permissions and settings over `adb` (alternative to the in-app setup)
 

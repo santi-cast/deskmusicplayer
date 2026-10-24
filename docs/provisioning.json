@@ -1,0 +1,6 @@
+{
+  "android.app.extra.PROVISIONING_DEVICE_ADMIN_COMPONENT_NAME": "com.reproductor.kiosk/com.reproductor.kiosk.AdminReceiver",
+  "android.app.extra.PROVISIONING_DEVICE_ADMIN_PACKAGE_DOWNLOAD_LOCATION": "https://github.com/santi-cast/deskmusicplayer/releases/latest/download/deskmusicplayer.apk",
+  "android.app.extra.PROVISIONING_DEVICE_ADMIN_SIGNATURE_CHECKSUM": "N_702YpyUL-PJbHWgd9H9Z2olCvpjEcyUq3DgnO3jLk",
+  "android.app.extra.PROVISIONING_LEAVE_ALL_SYSTEM_APPS_ENABLED": true
+}

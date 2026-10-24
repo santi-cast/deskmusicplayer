@@ -45,7 +45,28 @@ cualquier reproductor si publican lo que suena.
 Sin el modo kiosco, la app funciona igual como pantalla de inicio y reproductor, pero no bloquea: se puede salir desde la
 barra de notificaciones.
 
-## Opción B: con ordenador (necesaria hoy para el modo kiosco)
+### Modo kiosco con un código QR, sin ordenador
+
+Es el método de Android para preparar móviles de empresa. **No está probado todavía en un móvil real**: si lo prueba,
+cuéntelo en una *issue*.
+
+1. **Restablezca el móvil de fábrica** (borra todo; el modo kiosco solo se activa en un móvil sin cuentas).
+2. En la **pantalla de bienvenida**, toque **6 veces seguidas** en el mismo sitio. Se abre un lector de QR; en Android 7 y
+   8 el asistente puede pedir antes conectarse a una Wi-Fi para descargarlo.
+3. Escanee este código:
+
+   <img src="provisioning-qr.png" width="300" alt="Código QR de aprovisionamiento de DeskMusicPlayer">
+
+4. Android descarga la última versión de las [releases](https://github.com/santi-cast/deskmusicplayer/releases),
+   comprueba que está firmada con la clave del proyecto, la instala como *device owner* y termina la configuración. La
+   app se abre bloqueada; después, complete **🔧 → Configuración inicial**.
+
+El QR ([`provisioning.json`](provisioning.json)) contiene el componente de administración, el enlace fijo a la última
+versión (`releases/latest/download/deskmusicplayer.apk`), la huella SHA-256 del certificado de firma y la opción de no
+desactivar las apps del sistema (la radio, el navegador). Sirve para todas las versiones firmadas con la misma clave. Se
+genera con `tools/provisioning_qr.py`.
+
+## Opción B: con ordenador
 
 **Requisitos:** depuración USB activada y el PC autorizado para `adb`; en el PC, JDK 17 o superior y el SDK de Android
 (plataforma 36), con su ruta en `local.properties`: `sdk.dir=/ruta/a/Android/Sdk`.
@@ -73,9 +94,6 @@ adb shell am start -n com.reproductor.kiosk/.MainActivity
 Desde ese momento el móvil arranca en la app y solo se pueden abrir las apps elegidas, la tienda elegida y la confirmación
 de instalación de Android. Para deshacerlo, entre en 🔧 y use **Quitar device owner**: el móvil vuelve a ser un teléfono
 normal.
-
-Está previsto activarlo sin ordenador con un **código QR** tras restablecer de fábrica (el método de Android para
-empresas), cuando haya una versión publicada a la que apunte el QR.
 
 ### Permisos y ajustes por `adb` (alternativa a la configuración inicial)
 
